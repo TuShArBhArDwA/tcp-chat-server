@@ -12,24 +12,24 @@ A real-time multi-user TCP chat server built using Python's standard library. Th
 │                     (Port 4000)                             │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
-│  │   Client 1   │    │   Client 2   │    │   Client N   │  │
-│  │   (Thread)   │    │   (Thread)   │    │   (Thread)   │  │
-│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘  │
-│         │                   │                   │          │
-│         └───────────────────┼───────────────────┘          │
-│                             │                              │
-│                    ┌────────▼────────┐                     │
-│                    │  Shared State   │                     │
-│                    │  (Thread-Safe)  │                     │
-│                    │  - clients{}    │                     │
-│                    │  - usernames{}  │                     │
-│                    └─────────────────┘                     │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   │
+│  │   Client 1   │    │   Client 2   │    │   Client N   │   │
+│  │   (Thread)   │    │   (Thread)   │    │   (Thread)   │   │
+│  └──────┬───────┘    └──────┬───────┘    └──────┬───────┘   │
+│         │                   │                   │           │
+│         └───────────────────┼───────────────────┘           │
+│                             │                               │
+│                    ┌────────▼────────┐                      │
+│                    │  Shared State   │                      │
+│                    │  (Thread-Safe)  │                      │
+│                    │  - clients{}    │                      │
+│                    │  - usernames{}  │                      │
+│                    └─────────────────┘                      │
 │                                                             │
-│         ┌─────────────────────────────────────┐            │
-│         │      Background Idle Checker        │            │
-│         │      (Daemon Thread)                │            │
-│         └─────────────────────────────────────┘            │
+│         ┌─────────────────────────────────────┐             │
+│         │      Background Idle Checker        │             │
+│         │      (Daemon Thread)                │             │
+│         └─────────────────────────────────────┘             │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -51,16 +51,16 @@ Client                          Server
   │                               │
   │──── TCP Connect ─────────────►│
   │                               │ (spawn new thread)
-  │◄─── (waiting for login) ─────│
+  │◄─── (waiting for login) ──────│
   │                               │
   │──── LOGIN Naman ─────────────►│
   │                               │ (validate username)
-  │◄─── OK ──────────────────────│
+  │◄─── OK ───────────────────────│
   │                               │
   │──── MSG hello ───────────────►│
   │                               │ (broadcast to others)
   │                               │
-  │◄─── MSG OtherUser hi ────────│ (receive from others)
+  │◄─── MSG OtherUser hi ─────────│ (receive from others)
   │                               │
   │──── (disconnect) ────────────►│
   │                               │ (notify others)
