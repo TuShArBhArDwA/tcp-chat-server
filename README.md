@@ -150,30 +150,17 @@ algokart/
 
 ## Screen Recording
 
-📹 **Demo Video:** <!-- ADD YOUR VIDEO LINK HERE -->
+**Demo Video:**  Coming Soon
 
----
-
-## Testing Checklist
-
-- [x] Multiple clients can connect simultaneously
-- [x] Login with unique username
-- [x] Duplicate username rejected
-- [x] Messages broadcast to all users
-- [x] Disconnect notifications sent
-- [x] WHO lists active users
-- [x] DM sends private messages
-- [x] PING responds with PONG
-- [x] Idle timeout disconnects inactive users
-
----
-
-## Author
-
-**Tushar Bhardwaj**
 
 ---
 
 ## License
 
-This project is for educational/assignment purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Connect with me
+
+If you’d like to connect, feel free to reach out — [Click here](https://minianonlink.vercel.app/tusharbhardwaj)
