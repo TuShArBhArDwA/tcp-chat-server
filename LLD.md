@@ -7,11 +7,11 @@
 │                       ChatServer                            │
 ├─────────────────────────────────────────────────────────────┤
 │ Attributes:                                                 │
-│   - host: str                  # Bind address (0.0.0.0)    │
-│   - port: int                  # Listen port (4000)        │
-│   - idle_timeout: int          # Timeout in seconds (60)   │
+│   - host: str                  # Bind address (0.0.0.0)     │
+│   - port: int                  # Listen port (4000)         │
+│   - idle_timeout: int          # Timeout in seconds (60)    │
 │   - server_socket: socket      # Main listening socket      │
-│   - clients: Dict[socket, str] # socket → username mapping │
+│   - clients: Dict[socket, str] # socket → username mapping  │
 │   - usernames: Dict[str, socket] # username → socket mapping│
 │   - last_activity: Dict[socket, float] # Activity timestamps│
 │   - lock: threading.Lock       # Thread synchronization     │
@@ -77,18 +77,18 @@ last_activity: Dict[socket, float] = {
 
 ```
 Main Thread                    Client Threads              Daemon Thread
-     │                              │                           │
-     │  accept()                    │                           │
-     ├──────────────────►┌──────────┴───────────┐               │
-     │                   │ _handle_client(conn) │               │
-     │                   │   └─► _handle_login  │               │
-     │                   │   └─► message loop   │               │
-     │                   └──────────────────────┘               │
-     │                                                          │
-     │                                          ┌───────────────┴──┐
+     │                              │                            │
+     │  accept()                    │                            │
+     ├──────────────────►┌──────────┴───────────┐                │
+     │                   │ _handle_client(conn) │                │
+     │                   │   └─► _handle_login  │                │
+     │                   │   └─► message loop   │                │
+     │                   └──────────────────────┘                │
+     │                                                           │
+     │                                          ┌────────────────┴──┐
      │                                          │_check_idle_clients│
      │                                          │  (every 10 sec)   │
-     │                                          └──────────────────┘
+     │                                          └───────────────────┘
 ```
 
 ## 5. Key Algorithms
