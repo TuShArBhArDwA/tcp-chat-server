@@ -150,7 +150,7 @@ algokart/
 
 ## Screen Recording
 
-**Demo Video:**  Coming Soon
+**Demo Video:**  [View Demo](https://www.loom.com/share/abbff6a0f4fb4b938afdfbab4f7ca283)
 
 
 ---
